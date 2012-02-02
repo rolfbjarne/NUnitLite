@@ -118,6 +118,11 @@ namespace NUnitLite
             get { return ignoreReason; }
         }
 
+        public MethodInfo Method
+        {
+            get { return method; }
+        }
+
         public System.Collections.IDictionary Properties
         {
             get 
@@ -167,7 +172,7 @@ namespace NUnitLite
         #endregion
 
         #region Protected Methods
-        protected virtual void SetUp() 
+        public virtual void SetUp() 
         {
             if (setup != null)
             {
@@ -176,7 +181,7 @@ namespace NUnitLite
             }
         }
 
-        protected virtual void TearDown() 
+		public virtual void TearDown () 
         {
             if (teardown != null)
             {
@@ -229,7 +234,7 @@ namespace NUnitLite
             }
         }
 
-        protected virtual void RunTest()
+        public virtual void RunTest()
         {
             try
             {
