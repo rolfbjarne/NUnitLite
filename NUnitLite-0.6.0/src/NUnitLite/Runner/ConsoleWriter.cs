@@ -39,7 +39,13 @@ namespace NUnitLite.Runner
 
         public override System.Text.Encoding Encoding
         {
-            get { return System.Text.Encoding.Default; }
-        }
+			get {
+#if SILVERLIGHT
+				return System.Text.Encoding.UTF8;
+#else
+				return System.Text.Encoding.Default;
+#endif
+			}
+		}
     }
 }

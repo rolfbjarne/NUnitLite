@@ -5,6 +5,7 @@ using System.Text;
 
 namespace NUnitLite.Runner
 {
+#if !SILVERLIGHT
     /// <summary>
     /// Redirects output to a Tcp connection
     /// </summary>
@@ -47,4 +48,5 @@ namespace NUnitLite.Runner
             get { return System.Text.Encoding.Default; }
         }
     }
+#endif
 }
