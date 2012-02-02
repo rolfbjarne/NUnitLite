@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitLite (4.0)", "Projects\NUnitLite (4.0).csproj", "{C24A3FC4-2541-4E9C-BADD-564777610B75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitLite (2.0)", "Projects\NUnitLite (2.0).csproj", "{4E740131-3AD5-40C0-B7E6-9912CA71BBF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitLite (Silverlight)", "Projects\NUnitLite (Silverlight).csproj", "{4BBE9F64-609B-4AB0-958C-136898CD4406}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C24A3FC4-2541-4E9C-BADD-564777610B75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C24A3FC4-2541-4E9C-BADD-564777610B75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C24A3FC4-2541-4E9C-BADD-564777610B75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C24A3FC4-2541-4E9C-BADD-564777610B75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E740131-3AD5-40C0-B7E6-9912CA71BBF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E740131-3AD5-40C0-B7E6-9912CA71BBF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E740131-3AD5-40C0-B7E6-9912CA71BBF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E740131-3AD5-40C0-B7E6-9912CA71BBF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BBE9F64-609B-4AB0-958C-136898CD4406}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BBE9F64-609B-4AB0-958C-136898CD4406}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BBE9F64-609B-4AB0-958C-136898CD4406}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BBE9F64-609B-4AB0-958C-136898CD4406}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
