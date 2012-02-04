@@ -40,6 +40,7 @@ namespace NUnitLite.Runner
         public FileUI(string path) : base(new StreamWriter(path)) { }
     }
 
+#if !SILVERLIGHT
     /// <summary>
     /// A version of TextUI that displays to debug.
     /// 
@@ -50,7 +51,9 @@ namespace NUnitLite.Runner
     {
         public DebugUI() : base(DebugWriter.Out) { }
     }
+#endif
 
+#if !SILVERLIGHT
     public class TcpUI : TextUI
     {
         public TcpUI(string hostName, int port) : base( new TcpWriter(hostName, port) ) { }
@@ -59,6 +62,7 @@ namespace NUnitLite.Runner
 
         public TcpUI() : this("localhost", 9000) { }
     }
+#endif
 
     /// <summary>
     /// TextUI is a general purpose class that runs tests and
@@ -186,7 +190,12 @@ namespace NUnitLite.Runner
         private void WriteCopyright()
         {
             Assembly executingAssembly = Assembly.GetExecutingAssembly();
-            System.Version version = executingAssembly.GetName().Version;
+			System.Version version =
+#if SILVERLIGHT
+				new AssemblyName (executingAssembly.FullName).Version;
+#else
+				executingAssembly.GetName().Version;
+#endif
 
 #if NETCF_1_0
             writer.WriteLine("NUnitLite version {0}", version.ToString() );

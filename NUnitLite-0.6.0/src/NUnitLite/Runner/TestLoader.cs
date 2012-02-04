@@ -19,7 +19,13 @@ namespace NUnitLite.Runner
         /// <returns>A Test containing all fixtures found</returns>
         public static ITest Load(Assembly assembly)
         {
-            TestSuite suite = new TestSuite(assembly.GetName().Name);
+            TestSuite suite = new TestSuite(
+#if SILVERLIGHT
+				assembly.FullName
+#else
+				assembly.GetName().Name
+#endif
+				);
 
             foreach (Type type in assembly.GetTypes())
             {
@@ -45,7 +51,13 @@ namespace NUnitLite.Runner
         {
             Type type = assembly.GetType(className);
             if (type == null && className.IndexOf(',') == -1)
-                type = Type.GetType(className + "," + assembly.GetName().Name);
+                type = Type.GetType(className + "," + 
+#if SILVERLIGHT
+				new AssemblyName (assembly.FullName).Name
+#else
+				assembly.GetName().Name
+#endif
+				);
 
             if (type == null)
                 throw new TestRunnerException("Unable to load class " + className);

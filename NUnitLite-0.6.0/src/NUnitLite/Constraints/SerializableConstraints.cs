@@ -23,7 +23,7 @@
 
 using System;
 using System.IO;
-#if !NETCF
+#if !NETCF && !SILVERLIGHT
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 #endif
@@ -31,7 +31,7 @@ using System.Xml.Serialization;
 
 namespace NUnit.Framework.Constraints
 {
-#if !NETCF
+#if !NETCF && !SILVERLIGHT
     #region BinarySerializableConstraint
 
     /// <summary>
@@ -105,7 +105,7 @@ namespace NUnit.Framework.Constraints
     #endregion
 #endif
 
-#if !NETCF_1_0
+#if !NETCF_1_0 && !SILVERLIGHT
     #region XmlSerializableConstraint
 
     /// <summary>

@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 
+#if !SILVERLIGHT
 namespace NUnitLite.Runner
 {
     /// <summary>
@@ -45,3 +46,4 @@ namespace NUnitLite.Runner
         }
     }
 }
+#endif

@@ -44,6 +44,11 @@ namespace NUnit.Framework.Constraints
         /// </summary>
         protected bool caseInsensitive = Path.DirectorySeparatorChar == '\\';
 
+		/// <summary>
+		/// The string comparer to use when doing comparison
+		/// </summary>
+		protected StringComparison caseComparer = Path.DirectorySeparatorChar == '\\' ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal;
+
         /// <summary>
 		/// Construct a PathConstraint for a give expected path
 		/// </summary>
@@ -123,7 +128,7 @@ namespace NUnit.Framework.Constraints
 		/// <returns></returns>
 		protected bool IsSamePath( string path1, string path2 )
 		{
-			return string.Compare( Canonicalize( expected ), Canonicalize( (string)actual ), caseInsensitive ) == 0;
+			return string.Compare( Canonicalize( expected ), Canonicalize( (string)actual ), caseComparer ) == 0;
 		}
 
 		/// <summary>
@@ -146,10 +151,10 @@ namespace NUnit.Framework.Constraints
 
 			// if lengths are the same, check for equality
 			if ( length1 == length2 )
-				return string.Compare( path1, path2, caseInsensitive ) == 0;
+				return string.Compare (path1, path2, caseComparer) == 0;
 
 			// path 2 is longer than path 1: see if initial parts match
-			if ( string.Compare( path1, path2.Substring( 0, length1 ), caseInsensitive ) != 0 )
+			if ( string.Compare( path1, path2.Substring( 0, length1 ), caseComparer ) != 0 )
 				return false;
 			
 			// must match through or up to a directory separator boundary
