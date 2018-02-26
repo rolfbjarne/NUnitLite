@@ -24,6 +24,10 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // ***********************************************************************
 
+#if __IOS__ || __WATCHOS__ || __TVOS__
+#define NO_REMOTING
+#endif
+
 using System;
 using System.Diagnostics;
 using System.Threading;
@@ -60,7 +64,11 @@ namespace NUnit.Framework.Internal
 
 		Dictionary<Guid, TestResult> lookupTable;
 
+#if NO_REMOTING
+		static Container container;
+#else
 		private static readonly string CONTEXT_KEY = "TestResultName";
+#endif
 
 		public FinallyDelegate () {
 			this.testStack = new Stack<Tuple<TestExecutionContext, long, TestResult>>();
@@ -73,14 +81,22 @@ namespace NUnit.Framework.Internal
 			/* keep name in LogicalCallContext, because this will be inherited by
 			 * Threads spawned by the test case */
 			var guid = Guid.NewGuid();
+#if NO_REMOTING
+			container = new Container (guid);
+#else
 			CallContext.SetData(CONTEXT_KEY, new Container(guid));
+#endif
 
 			this.lookupTable.Add(guid, result);
 			this.testStack.Push(frame);
 		}
 
 		public void HandleUnhandledExc (Exception ex) {
+#if NO_REMOTING
+			Container c = container;
+#else
 			Container c = (Container) CallContext.GetData(CONTEXT_KEY);
+#endif
 			TestResult result = this.lookupTable [c.guid];
 			result.RecordException(ex);
 			result.ThreadCrashFail = true;
